@@ -1,12 +1,38 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState, useCallback } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { IoMdArrowBack } from "react-icons/io";
 
 interface Props {
   showModal: boolean;
   closeModal: () => void;
 }
+
+const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
+  <div className="mb-2">
+    <div className="flex bg-red-200 items-center rounded overflow-hidden border-red-300 border-2 justify-between">
+      <p className="px-2">
+        {ticketData.ticketName} : ₹{ticketData.ticketPrice}
+      </p>
+      <div className="flex items-center space-x-1 bg-white">
+        <button
+          onClick={() => incrementTicket(ticketData.selectedTicket - 1, itemNo)}
+          className="p-4 bg-red-300"
+        >
+          <AiOutlineMinus />
+        </button>
+        <p className="text-black px-2 text-xl">{ticketData.selectedTicket}</p>
+        <button
+          onClick={() => incrementTicket(ticketData.selectedTicket + 1, itemNo)}
+          className="p-4 bg-red-300"
+        >
+          <AiOutlinePlus />
+        </button>
+      </div>
+    </div>
+    <p>{ticketData.ticketDescription}</p>
+  </div>
+);
 
 export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
   const [contactDetails, setContactDetails] = useState({
@@ -35,6 +61,41 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
 
   const { submitted: contactDetailsSubmitted } = contactDetails;
 
+  const eventTickets = [
+    {
+      ticketName: "Standard Ticket",
+      ticketQuantity: 1000,
+      ticketPrice: 1000,
+      ticketDescription: "This is a standard ticket",
+      selectedTicket: 0,
+    },
+    {
+      ticketName: "Couple Ticket Ticket",
+      ticketQuantity: 40,
+      ticketPrice: 2000,
+      ticketDescription: "Admits a couple into the event",
+      selectedTicket: 0,
+    },
+  ];
+
+  const [selectedTicket, setSelectedTicket] = useState(eventTickets);
+
+  const incrementTicket = (value: string, idx: any) => {
+    if (
+      selectedTicket[idx].ticketQuantity >= parseInt(value) &&
+      parseInt(value) >= 0
+    ) {
+      let allTicket = [...selectedTicket];
+      allTicket[idx] = { ...allTicket[idx], selectedTicket: parseInt(value) };
+      setSelectedTicket(allTicket);
+    }
+  };
+
+  const totalTicketPayments = selectedTicket.reduce((prev, item) => {
+    return prev + item.ticketPrice * item.selectedTicket;
+  }, 0);
+  const serviceCharges = (totalTicketPayments * 5) / 100;
+
   return (
     <>
       <Transition appear show={showModal} as={Fragment}>
@@ -62,7 +123,7 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Dialog.Title
                       as="h3"
@@ -144,9 +205,15 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
                     <>
                       <div className="mt-1">
                         <div className="flex items-center space-x-3 mb-2">
-                          <button onClick={()=>{
-                            setContactDetails((d)=>({...d,submitted:false}))
-                          }} className="bg-blue-100 font-light text-gray-800 px-4 py-1 rounded-full mb-2">
+                          <button
+                            onClick={() => {
+                              setContactDetails((d) => ({
+                                ...d,
+                                submitted: false,
+                              }));
+                            }}
+                            className="bg-blue-100 font-light text-gray-800 px-4 py-1 rounded-full mb-2"
+                          >
                             <IoMdArrowBack />
                           </button>
                           <div>
@@ -154,7 +221,34 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
                             <p>{contactDetails.email}</p>
                           </div>
                         </div>
+                        <div>
+                          {selectedTicket.map((item, idx) => (
+                            <Ticket
+                              incrementTicket={incrementTicket}
+                              ticketData={item}
+                              itemNo={idx}
+                              key={idx}
+                            />
+                          ))}
+                        </div>
                       </div>
+                      {totalTicketPayments !== 0 && (
+                        <div className="text-right">
+                          <p>
+                            Total Ticket Payment :{" "}
+                            <span className="font-bold">
+                              {totalTicketPayments + serviceCharges}
+                            </span>
+                          </p>
+                          <p className="text-sm">
+                            Service Charges :{" "}
+                            {serviceCharges}
+                          </p>
+                          <button className="bg-red-400 px-4 py-2 rounded text-white mt-2">
+                            Make Payment
+                          </button>
+                        </div>
+                      )}
                     </>
                   )}
                 </Dialog.Panel>
