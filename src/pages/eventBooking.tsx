@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { EventImage, EventDetails } from "../components/EventBooking";
 
 export const EventBooking = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id } = useParams<{ id: string }>();
 
   const eventDetails = {

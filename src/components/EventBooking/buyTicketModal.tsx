@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
-  <div className="mb-2">
+  <div className="mb-4">
     <div className="flex bg-red-200 items-center rounded overflow-hidden border-red-300 border-2 justify-between">
       <p className="px-2">
         {ticketData.ticketName} : ₹{ticketData.ticketPrice}
@@ -21,7 +21,7 @@ const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
         >
           <AiOutlineMinus />
         </button>
-        <p className="text-black px-2 text-xl">{ticketData.selectedTicket}</p>
+        <p className="text-black px-2 text-xl w-10 text-center">{ticketData.selectedTicket}</p>
         <button
           onClick={() => incrementTicket(ticketData.selectedTicket + 1, itemNo)}
           className="p-4 bg-red-300"
@@ -244,7 +244,7 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
                             Service Charges :{" "}
                             {serviceCharges}
                           </p>
-                          <button className="bg-red-400 px-4 py-2 rounded text-white mt-2">
+                          <button className="bg-red-400 px-6 py-2 text-sm rounded text-white mt-5">
                             Make Payment
                           </button>
                         </div>
