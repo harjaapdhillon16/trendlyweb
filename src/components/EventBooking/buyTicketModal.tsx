@@ -1,11 +1,16 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useCallback } from "react";
+import { Fragment, useState, useCallback, useEffect } from "react";
 import { AiOutlineClose, AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { IoMdArrowBack } from "react-icons/io";
+import { useParams } from "react-router-dom";
+
+import { useRazorpay } from "../../utils/hooks/useRazorpay";
 
 interface Props {
   showModal: boolean;
   closeModal: () => void;
+  ticketData?: any;
+  ticketCount?: any;
 }
 
 const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
@@ -14,33 +19,50 @@ const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
       <p className="px-2">
         {ticketData.ticketName} : ₹{ticketData.ticketPrice}
       </p>
-      <div className="flex items-center space-x-1 bg-white">
-        <button
-          onClick={() => incrementTicket(ticketData.selectedTicket - 1, itemNo)}
-          className="p-4 bg-red-300"
-        >
-          <AiOutlineMinus />
-        </button>
-        <p className="text-black px-2 text-xl w-10 text-center">{ticketData.selectedTicket}</p>
-        <button
-          onClick={() => incrementTicket(ticketData.selectedTicket + 1, itemNo)}
-          className="p-4 bg-red-300"
-        >
-          <AiOutlinePlus />
-        </button>
-      </div>
+      {ticketData.ticketQuantity === 0 ? (
+        <p className="p-2">Out of stock</p>
+      ) : (
+        <div className="flex items-center space-x-1 bg-white">
+          <button
+            onClick={() =>
+              incrementTicket(ticketData.selectedTicket - 1, itemNo)
+            }
+            className="p-4 bg-red-300"
+          >
+            <AiOutlineMinus />
+          </button>
+          <p className="text-black px-2 text-xl w-10 text-center">
+            {ticketData.selectedTicket}
+          </p>
+          <button
+            onClick={() =>
+              incrementTicket(ticketData.selectedTicket + 1, itemNo)
+            }
+            className="p-4 bg-red-300"
+          >
+            <AiOutlinePlus />
+          </button>
+        </div>
+      )}
     </div>
     <p>{ticketData.ticketDescription}</p>
   </div>
 );
 
-export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
+export const BuyTicketModal = ({
+  showModal,
+  closeModal,
+  ticketData,
+  ticketCount,
+}: Props) => {
+  const { id } = useParams<{ id: string }>();
   const [contactDetails, setContactDetails] = useState({
     phone: "",
     email: "",
     submitted: false,
   });
 
+  console.log(ticketData);
   function validEmail(e: string) {
     var filter =
       // eslint-disable-next-line no-useless-escape
@@ -61,24 +83,19 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
 
   const { submitted: contactDetailsSubmitted } = contactDetails;
 
-  const eventTickets = [
-    {
-      ticketName: "Standard Ticket",
-      ticketQuantity: 1000,
-      ticketPrice: 1000,
-      ticketDescription: "This is a standard ticket",
-      selectedTicket: 0,
-    },
-    {
-      ticketName: "Couple Ticket Ticket",
-      ticketQuantity: 40,
-      ticketPrice: 2000,
-      ticketDescription: "Admits a couple into the event",
-      selectedTicket: 0,
-    },
-  ];
+  const eventTickets = (ticketData ?? [])?.map((item: any) => ({
+    ticketName: item.ticketName,
+    ticketPrice: item.ticketPrice,
+    ticketQuantity: ticketCount[item.ticketName],
+    ticketDescription: item.ticketDescription,
+    selectedTicket: 0,
+  }));
 
-  const [selectedTicket, setSelectedTicket] = useState(eventTickets);
+  const [selectedTicket, setSelectedTicket] = useState<any>([]);
+
+  useEffect(() => {
+    if (selectedTicket.length === 0) setSelectedTicket(eventTickets);
+  }, [eventTickets, selectedTicket]);
 
   const incrementTicket = (value: string, idx: any) => {
     if (
@@ -91,10 +108,20 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
     }
   };
 
-  const totalTicketPayments = selectedTicket.reduce((prev, item) => {
+  const totalTicketPayments = selectedTicket.reduce((prev: any, item: any) => {
     return prev + item.ticketPrice * item.selectedTicket;
   }, 0);
-  const serviceCharges = (totalTicketPayments * 5) / 100;
+  const serviceCharges =
+    (totalTicketPayments * 5) / 100 < 10 ? 10 : (totalTicketPayments * 5) / 100;
+
+  const { handlePayment } = useRazorpay({
+    totalPayment: totalTicketPayments + serviceCharges,
+    email: contactDetails.email,
+    phone: contactDetails.phone,
+    eventId: id,
+    serviceCharges: `${serviceCharges}`,
+    ticketData: selectedTicket,
+  });
 
   return (
     <>
@@ -222,7 +249,7 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
                           </div>
                         </div>
                         <div>
-                          {selectedTicket.map((item, idx) => (
+                          {selectedTicket.map((item: any, idx: any) => (
                             <Ticket
                               incrementTicket={incrementTicket}
                               ticketData={item}
@@ -241,10 +268,12 @@ export const BuyTicketModal = ({ showModal, closeModal }: Props) => {
                             </span>
                           </p>
                           <p className="text-sm">
-                            Service Charges :{" "}
-                            {serviceCharges}
+                            Service Charges : {serviceCharges}
                           </p>
-                          <button className="bg-red-400 px-6 py-2 text-sm rounded text-white mt-5">
+                          <button
+                            onClick={handlePayment}
+                            className="bg-red-400 px-6 py-2 text-sm rounded text-white mt-5"
+                          >
                             Make Payment
                           </button>
                         </div>

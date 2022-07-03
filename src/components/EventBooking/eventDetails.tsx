@@ -8,6 +8,9 @@ interface Props {
     eventTiming: string;
     eventLocation: string;
     eventDescription: any;
+    paidEvent: boolean;
+    ticketData: any;
+    ticketCount: any;
   };
 }
 
@@ -18,6 +21,9 @@ export const EventDetails = ({
     eventTiming,
     eventLocation,
     eventDescription,
+    paidEvent,
+    ticketData,
+    ticketCount,
   },
 }: Props) => {
   const [isBookingModalOpen, setBookingModalOpen] = useState(false);
@@ -30,14 +36,18 @@ export const EventDetails = ({
         <p className="text-base">{eventTiming}</p>
         <p className="text-base">{eventLocation}</p>
       </div>
-      <button
-        onClick={openModal}
-        className="w-full bg-[#ff4545] text-white h-[50px] rounded-sm text-lg"
-      >
-        Buy Tickets
-      </button>
+      {paidEvent && (
+        <button
+          onClick={openModal}
+          className="w-full bg-[#ff4545] text-white h-[50px] rounded-sm text-lg"
+        >
+          Buy Tickets
+        </button>
+      )}
       <p className="mb-4 mt-2 text-base">{eventDescription}</p>
       <BuyTicketModal
+        ticketData={ticketData}
+        ticketCount={ticketCount}
         showModal={isBookingModalOpen}
         closeModal={() => setBookingModalOpen(false)}
       />
