@@ -16,9 +16,12 @@ interface Props {
 const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
   <div className="mb-4">
     <div className="flex bg-red-200 items-center rounded overflow-hidden border-red-300 border-2 justify-between">
-      <p className="px-2">
-        {ticketData.ticketName} : ₹{ticketData.ticketPrice}
-      </p>
+      <div>
+        <p className="px-2 text-lg mb-[-5px]">
+          {ticketData.ticketName} : ₹{ticketData.ticketPrice}
+        </p>
+        <p className="text-sm px-2">Available Tickets : {ticketData.ticketQuantity}</p>
+      </div>
       {ticketData.ticketQuantity === 0 ? (
         <p className="p-2">Out of stock</p>
       ) : (
@@ -62,7 +65,6 @@ export const BuyTicketModal = ({
     submitted: false,
   });
 
-  console.log(ticketData);
   function validEmail(e: string) {
     var filter =
       // eslint-disable-next-line no-useless-escape
@@ -112,7 +114,9 @@ export const BuyTicketModal = ({
     return prev + item.ticketPrice * item.selectedTicket;
   }, 0);
   const serviceCharges =
-    (totalTicketPayments * 5) / 100 < 10 ? 10 : (totalTicketPayments * 5) / 100;
+    (totalTicketPayments * 15) / 100 < 10
+      ? 10
+      : (totalTicketPayments * 15) / 100;
 
   const { handlePayment } = useRazorpay({
     totalPayment: totalTicketPayments + serviceCharges,

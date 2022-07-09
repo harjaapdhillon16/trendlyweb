@@ -11,6 +11,7 @@ interface Props {
     paidEvent: boolean;
     ticketData: any;
     ticketCount: any;
+    eventExpired: boolean;
   };
 }
 
@@ -24,6 +25,7 @@ export const EventDetails = ({
     paidEvent,
     ticketData,
     ticketCount,
+    eventExpired,
   },
 }: Props) => {
   const [isBookingModalOpen, setBookingModalOpen] = useState(false);
@@ -36,7 +38,7 @@ export const EventDetails = ({
         <p className="text-base">{eventTiming}</p>
         <p className="text-base">{eventLocation}</p>
       </div>
-      {paidEvent && (
+      {paidEvent && !eventExpired && (
         <button
           onClick={openModal}
           className="w-full bg-[#ff4545] text-white h-[50px] rounded-sm text-lg"
@@ -44,7 +46,8 @@ export const EventDetails = ({
           Buy Tickets
         </button>
       )}
-      <p className="mb-4 mt-2 text-base">{eventDescription}</p>
+      {eventExpired && <p className="text-gray-400">This is an expired event</p>}
+      <p className="mb-4 mt-0 text-base">{eventDescription}</p>
       <BuyTicketModal
         ticketData={ticketData}
         ticketCount={ticketCount}

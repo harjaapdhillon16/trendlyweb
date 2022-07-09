@@ -40,3 +40,5 @@ export const Landing = () => {
     </div>
   );
 };
+
+export default Landing;

@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { url } from "../utils/api/apiUrl";
+import Logo from "../assets/icon.png";
 import { EventImage, EventDetails } from "../components/EventBooking";
 
 export const EventBooking = () => {
@@ -12,16 +14,14 @@ export const EventBooking = () => {
   });
 
   const fetchEventDetails = useCallback(async () => {
-    const response = await fetch(
-      `http://localhost:3001/getEventInfoWithId/${id}`
-    );
+    const response = await fetch(`${url}/getEventInfoWithId/${id}`);
     const data = await response.json();
     // if (Object.keys(data).length > 0) {
     //   return {};
     // }
-    console.log(data);
     setEventDetails({
       data: {
+        eventExpired: new Date(data.Date).getTime() <= Date.now(),
         eventImage: data.Event_image,
         eventName: data.Event_name,
         eventVenue: data.Event_Venue,
@@ -36,6 +36,8 @@ export const EventBooking = () => {
     });
   }, [id]);
 
+  console.log(eventDetails.data);
+
   useEffect(() => {
     fetchEventDetails();
   }, [fetchEventDetails]);
@@ -44,8 +46,14 @@ export const EventBooking = () => {
 
   return (
     <div className="bg-gradient-to-r from-red-50 min-h-[100vh] w-full">
+      <div className="bg-black flex items-center">
+        <img src={Logo} className="w-20 h-20 p-3" alt="Logo" />
+        <p className="text-white font-bold">App for events</p>
+      </div>
       <EventImage eventImage={data.eventImage} />
       <EventDetails eventDetails={data} />
     </div>
   );
 };
+
+export default EventBooking;
