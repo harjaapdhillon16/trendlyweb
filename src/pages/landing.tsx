@@ -18,22 +18,32 @@ export const Landing = () => {
             Bringing you the best events around your city (tricity for now) !
           </p>
           <div className="md:flex items-center justify-center md:space-x-3 mt-2">
-            <button className="bg-white flex items-center text-black w-[200px] justify-center h-[49px] py-2 rounded-lg space-x-1 mb-2 md:mb-0 mx-auto md:mx-0">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.app.kindly"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-white flex items-center text-black w-[200px] justify-center h-[49px] py-2 rounded-lg space-x-1 mb-2 md:mb-0 mx-auto md:mx-0"
+            >
               <img
                 alt="google"
                 className="h-8 w-8"
                 src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
               />
               <span>Google Play Store</span>
-            </button>
-            <button className="bg-white text-black flex items-center justify-center w-[200px] h-[49px] py-2 rounded-lg space-x-1 mx-auto md:mx-0">
+            </a>
+            <a
+              href="https://apps.apple.com/in/app/trendly-events-near-you/id1607744954"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-white text-black flex items-center justify-center w-[200px] h-[49px] py-2 rounded-lg space-x-1 mx-auto md:mx-0"
+            >
               <img
                 alt="apple"
                 className="h-7 w-7 object-contain"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png"
               />
               <span>App Store</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
