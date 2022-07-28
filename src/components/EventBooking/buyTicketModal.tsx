@@ -125,6 +125,7 @@ export const BuyTicketModal = ({
     eventId: id,
     serviceCharges: `${serviceCharges}`,
     ticketData: selectedTicket,
+    closeModal
   });
 
   return (

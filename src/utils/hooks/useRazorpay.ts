@@ -8,6 +8,7 @@ interface Props {
   ticketData: any;
   eventId: string;
   serviceCharges: string;
+  closeModal: () => void;
 }
 
 export const useRazorpay = ({
@@ -17,6 +18,7 @@ export const useRazorpay = ({
   ticketData,
   eventId,
   serviceCharges,
+  closeModal,
 }: Props) => {
   function loadScript(src: string) {
     return new Promise((resolve) => {
@@ -72,7 +74,13 @@ export const useRazorpay = ({
           totalPayment: amount,
           serviceCharges: serviceCharges,
         };
-        await axios.post(`${url}/verifyPaymentV2`, data);
+        const apiRes = await axios.post(`${url}/verifyPaymentV2`, data);
+        console.log(apiRes);
+        if ((apiRes as any)?.data?.message === "Success") {
+          alert("Tickets successfully booked");
+          closeModal();
+          window.location.reload();
+        }
       },
       prefill: {
         name: "",

@@ -47,7 +47,7 @@ export const EventDetails = ({
         </button>
       )}
       {eventExpired && <p className="text-gray-400">This is an expired event</p>}
-      <p className="mb-4 mt-0 text-base">{eventDescription}</p>
+      <p className="mb-4 mt-2 text-base">{eventDescription}</p>
       <BuyTicketModal
         ticketData={ticketData}
         ticketCount={ticketCount}
