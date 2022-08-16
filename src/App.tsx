@@ -9,6 +9,7 @@ import {
 const Landing = React.lazy(() => import("./pages/landing"));
 const EventBooking = React.lazy(() => import("./pages/eventBooking"));
 const TicketQRPage = React.lazy(() => import("./pages/ticketQRPage"));
+const Download = React.lazy(() => import("./pages/download"))
 
 const Loading = () => (
   <div className="bg-black w-screen h-screen text-white text-center">
@@ -24,6 +25,7 @@ export default function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/events/:id" component={EventBooking} />
           <Route exact path="/tickets/:id" component={TicketQRPage} />
+          <Route exact path="/download" component={Download} />
           <Redirect to="/" />
         </Switch>
       </Router>
