@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 import { url } from "../api/apiUrl";
 
 interface Props {
@@ -33,6 +35,8 @@ export const useRazorpay = ({
       document.body.appendChild(script);
     });
   }
+
+  let history = useHistory();
 
   async function handlePayment() {
     const res = await loadScript(
@@ -79,7 +83,7 @@ export const useRazorpay = ({
         if ((apiRes as any)?.data?.message === "Success") {
           alert("Tickets successfully booked");
           closeModal();
-          window.location.reload();
+          history.push(`/tickets/${apiRes?.data?.id}`);
         }
       },
       prefill: {

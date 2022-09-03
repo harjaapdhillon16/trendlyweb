@@ -38,7 +38,7 @@ export const EventDetails = ({
         <p className="text-base">{eventTiming}</p>
         <p className="text-base">{eventLocation}</p>
       </div>
-      {paidEvent && !eventExpired && (
+      {paidEvent && eventExpired && (
         <button
           onClick={openModal}
           className="w-full bg-[#ff4545] text-white h-[50px] rounded-sm text-lg"

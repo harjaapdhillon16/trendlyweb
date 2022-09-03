@@ -16,9 +16,8 @@ const Download = () => {
     ) {
       window.location.href =
         "https://apps.apple.com/in/app/trendly-events-near-you/id1607744954";
-    } else {
-      setRenderRedirect(true);
     }
+    setRenderRedirect(true);
   }, []);
   return (
     <>
