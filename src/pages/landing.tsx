@@ -46,6 +46,13 @@ export const Landing = () => {
             </a>
           </div>
         </div>
+        <a target="_blank" href="https://instagram.com/trendlyapp" rel="noreferrer" >
+          <img
+            src="https://image.similarpng.com/very-thumbnail/2020/06/Instagram-logo-transparent-PNG.png"
+            alt="Instagram"
+            className="w-12 h-12 rounded-2xl absolute bottom-2 right-2"
+          />
+        </a>
       </div>
     </div>
   );
