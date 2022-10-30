@@ -13,6 +13,7 @@ interface Props {
     ticketCount: any;
     eventExpired: boolean;
   };
+  fetchEventDetails: () => Promise<void>;
 }
 
 export const EventDetails = ({
@@ -27,6 +28,7 @@ export const EventDetails = ({
     ticketCount,
     eventExpired,
   },
+  fetchEventDetails,
 }: Props) => {
   const [isBookingModalOpen, setBookingModalOpen] = useState(false);
   const openModal = () => setBookingModalOpen(true);
@@ -38,7 +40,8 @@ export const EventDetails = ({
         <p className="text-base">{eventTiming}</p>
         <p className="text-base">{eventLocation}</p>
       </div>
-      {paidEvent && !eventExpired && (
+      {paidEvent && (
+        //  && !eventExpired
         <button
           onClick={openModal}
           className="w-full bg-[#ff4545] text-white h-[50px] rounded-sm text-lg"
@@ -46,10 +49,13 @@ export const EventDetails = ({
           Buy Tickets
         </button>
       )}
-      {eventExpired && <p className="text-gray-400">This is an expired event</p>}
+      {eventExpired && (
+        <p className="text-gray-400">This is an expired event</p>
+      )}
       <p className="mb-4 mt-2 text-base">{eventDescription}</p>
       <BuyTicketModal
         ticketData={ticketData}
+        fetchEventDetails={fetchEventDetails}
         ticketCount={ticketCount}
         showModal={isBookingModalOpen}
         closeModal={() => setBookingModalOpen(false)}

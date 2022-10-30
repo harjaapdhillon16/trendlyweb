@@ -41,6 +41,12 @@ export const EventBooking = () => {
 
   useEffect(() => {
     fetchEventDetails();
+    const interval = setInterval(() => {
+      fetchEventDetails();
+    }, 20000);
+    return () => {
+      clearInterval(interval);
+    };
   }, [fetchEventDetails]);
 
   const { data, loading } = eventDetails;
@@ -61,7 +67,7 @@ export const EventBooking = () => {
                 <EventImage eventImage={data.eventImage} />
               </div>
               <div className="md:w-[40vw]">
-                <EventDetails eventDetails={data} />
+                <EventDetails fetchEventDetails={fetchEventDetails} eventDetails={data} />
               </div>
             </div>
           ) : (

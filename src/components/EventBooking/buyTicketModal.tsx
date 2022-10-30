@@ -11,6 +11,7 @@ interface Props {
   closeModal: () => void;
   ticketData?: any;
   ticketCount?: any;
+  fetchEventDetails: () => Promise<void>;
 }
 
 const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
@@ -20,10 +21,12 @@ const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
         <p className="px-2 text-lg mb-[-5px]">
           {ticketData.ticketName} : ₹{ticketData.ticketPrice}
         </p>
-        <p className="text-sm px-2">Available Tickets : {ticketData.ticketQuantity}</p>
+        <p className="text-sm px-2">
+          Available Tickets : {ticketData.ticketQuantity}
+        </p>
       </div>
       {ticketData.ticketQuantity === 0 ? (
-        <p className="p-2">Out of stock</p>
+        <p className="p-2 font-[600]">Sold Out !</p>
       ) : (
         <div className="flex items-center space-x-1 bg-white">
           <button
@@ -57,12 +60,14 @@ export const BuyTicketModal = ({
   closeModal,
   ticketData,
   ticketCount,
+  fetchEventDetails,
 }: Props) => {
   const { id } = useParams<{ id: string }>();
   const [contactDetails, setContactDetails] = useState({
     phone: "",
     email: "",
     submitted: false,
+    loading: false,
   });
 
   function validEmail(e: string) {
@@ -72,7 +77,8 @@ export const BuyTicketModal = ({
     return String(e).search(filter) !== -1;
   }
 
-  const submitContactDetails = useCallback(() => {
+  const submitContactDetails = useCallback(async () => {
+    setContactDetails((d) => ({ ...d, loading: true }));
     if (contactDetails.phone.length !== 10) {
       alert("Please provide a valid phone number");
       return;
@@ -80,8 +86,9 @@ export const BuyTicketModal = ({
       alert("Please provide a valid email");
       return;
     }
-    setContactDetails((d) => ({ ...d, submitted: true }));
-  }, [contactDetails]);
+    await fetchEventDetails();
+    setContactDetails((d) => ({ ...d, loading: false, submitted: true }));
+  }, [contactDetails, fetchEventDetails]);
 
   const { submitted: contactDetailsSubmitted } = contactDetails;
 
@@ -125,7 +132,7 @@ export const BuyTicketModal = ({
     eventId: id,
     serviceCharges: `${serviceCharges}`,
     ticketData: selectedTicket,
-    closeModal
+    closeModal,
   });
 
   return (
@@ -155,7 +162,7 @@ export const BuyTicketModal = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full transform overflow-hidden rounded-lg bg-white min-h-[90vh] p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Dialog.Title
                       as="h3"
@@ -223,10 +230,10 @@ export const BuyTicketModal = ({
                           <div className="flex items-center justify-between">
                             <button
                               type="button"
-                              className="inline-flex w-20 justify-center rounded-md border border-transparent bg-red-400 px-6 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ml-auto"
+                              className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-400 px-6 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ml-auto"
                               onClick={submitContactDetails}
                             >
-                              Next
+                              {contactDetails.loading ? "Loading" : "Next"}
                             </button>
                           </div>
                         </form>

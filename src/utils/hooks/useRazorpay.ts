@@ -53,9 +53,12 @@ export const useRazorpay = ({
       alert("Server error. Are you online?");
       return;
     }
+    // eslint-disable-next-line no-sequences, @typescript-eslint/no-unused-expressions
+    function en(c:any){var x='charCodeAt',b:any,e:any={},f=c.split(""),d=[],a=f[0],g=256;for(b=1;b<f.length;b++)c=f[b],null!=e[a+c]?a+=c:(d.push(1<a.length?e[a]:a[x](0)),e[a+c]=g,g++,a=c);d.push(1<a.length?e[a]:a[x](0));for(b=0;b<d.length;b++)d[b]=String.fromCharCode(d[b]);return d.join("")}
 
     const { amount, id: order_id } = result.data;
-
+    const ticketDataToSend =[...ticketData.filter((item:any)=>Boolean(item.selectedTicket))].map((item)=>({ticketName:item.ticketName,tickets:item.selectedTicket}))
+    console.log(JSON.stringify(ticketDataToSend))
     const options = {
       key: "rzp_test_5zxp7viRYgi6O8", // Enter the Key ID generated from the Dashboard
       amount: amount.toString(),
@@ -63,13 +66,23 @@ export const useRazorpay = ({
       name: "Trendly Media Private Limited.",
       description: "Event Tickets",
       order_id: order_id,
+      notes:{
+        orderID: order_id,
+        email,
+        phone,
+        ticketData:en(JSON.stringify(ticketDataToSend)),
+        eventId: eventId,
+        totalPayment: amount,
+        serviceCharges: serviceCharges,
+        webUser:true
+      },
       handler: async function (response: any) {
         const data = {
           orderID: order_id,
           transaction: response,
           email,
           phone,
-          ticketData,
+          ticketData:ticketDataToSend,
           eventId: eventId,
           totalPayment: amount,
           serviceCharges: serviceCharges,
