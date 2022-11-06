@@ -6,7 +6,7 @@ import Logo from "../assets/icon.png";
 import { EventImage, EventDetails } from "../components/EventBooking";
 import { LoadingJSX } from "../components/Common/PageLoading";
 
-export const EventBooking = () => {
+const EventBooking = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id } = useParams<{ id: string }>();
   const [eventDetails, setEventDetails] = useState<any>({

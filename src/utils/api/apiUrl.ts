@@ -3,4 +3,4 @@ const urls = {
   localURL: "http://192.168.1.3:80",
 };
 
-export const url = urls.hostedURL;
+export const url = urls.localURL;
