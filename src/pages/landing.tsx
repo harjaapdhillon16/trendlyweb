@@ -1,4 +1,6 @@
 import { WaitIsOver } from "../components/Landing/waitIsOver";
+import { Features } from "../components/Landing/features";
+import { Footer } from "../components/Common/footer";
 
 export const Landing = () => {
   return (
@@ -54,14 +56,18 @@ export const Landing = () => {
           </a>
         </div>
       </div>
-      <video
-        className="absolute top-0 hidden md:block w-full h-screen z-[-100] bg-cover object-cover"
-        autoPlay
-        muted
-        loop
-        src="https://firebasestorage.googleapis.com/v0/b/trendly-40221.appspot.com/o/website_assets%2Fvideoplayback.mp4?alt=media&token=2c466b4c-aec8-4165-894f-75dc628da073"
-      />
+      <div className="fixed top-0 hidden md:block z-[-100]">
+        <video
+          className="w-full h-screen bg-cover object-cover"
+          autoPlay
+          muted
+          loop
+          src="https://firebasestorage.googleapis.com/v0/b/trendly-40221.appspot.com/o/website_assets%2Fvideoplayback.mp4?alt=media&token=2c466b4c-aec8-4165-894f-75dc628da073"
+        />
+      </div>
       <WaitIsOver />
+      <Features />
+      <Footer />
     </>
   );
 };
