@@ -6,7 +6,7 @@ import Logo from "../assets/icon.png";
 import { EventImage, EventDetails } from "../components/EventBooking";
 import { LoadingJSX } from "../components/Common/PageLoading";
 
-export const EventBooking = () => {
+const EventBooking = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id } = useParams<{ id: string }>();
   const [eventDetails, setEventDetails] = useState<any>({
@@ -41,6 +41,12 @@ export const EventBooking = () => {
 
   useEffect(() => {
     fetchEventDetails();
+    const interval = setInterval(() => {
+      fetchEventDetails();
+    }, 20000);
+    return () => {
+      clearInterval(interval);
+    };
   }, [fetchEventDetails]);
 
   const { data, loading } = eventDetails;
@@ -61,7 +67,7 @@ export const EventBooking = () => {
                 <EventImage eventImage={data.eventImage} />
               </div>
               <div className="md:w-[40vw]">
-                <EventDetails eventDetails={data} />
+                <EventDetails fetchEventDetails={fetchEventDetails} eventDetails={data} />
               </div>
             </div>
           ) : (

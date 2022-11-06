@@ -6,10 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-const Landing = React.lazy(() => import("./pages/landing"));
-const EventBooking = React.lazy(() => import("./pages/eventBooking"));
-const TicketQRPage = React.lazy(() => import("./pages/ticketQRPage"));
-const Download = React.lazy(() => import("./pages/download"))
+import { Landing, TicketQRPage, EventBooking, Download } from "./pages";
 
 const Loading = () => (
   <div className="bg-black w-screen h-screen text-white text-center">

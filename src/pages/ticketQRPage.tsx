@@ -47,7 +47,7 @@ export const TicketQRPage = () => {
   }, [fetchTicketURL]);
 
   const {
-    data: { event },
+    data: { event, ticket },
     loading,
     error,
   } = state;
@@ -63,20 +63,27 @@ export const TicketQRPage = () => {
       {!loading && !error && (
         <>
           <div className="text-center pt-5">
-            <p className="pb-3 text-xl font-medium">
-              Your Event Ticket QR Code
-            </p>
-            <QRCode
-              size={256}
-              style={{
-                width: 256,
-                height: 256,
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-              value={""}
-            />
-            <p className="pt-2">{event.Event_name}</p>
+            <>
+              <p className="pb-3 text-xl font-medium">
+                Your Event Ticket QR Code
+              </p>
+              <QRCode
+                size={256}
+                style={{
+                  width: 256,
+                  height: 256,
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+                value={""}
+              />
+              <p className="pt-2">{event.Event_name}</p>
+              {ticket.tickets.map(({ ticketName, tickets }: any) => (
+                <p className="pt-2">
+                  {ticketName}: {tickets}
+                </p>
+              ))}
+            </>
           </div>
         </>
       )}
