@@ -13,8 +13,8 @@ export const Footer = () => {
         </p>
         <p>
           Phone :{" "}
-          <a className="font-semibold" href="tel:+9198729432321">
-            +91-98729432321
+          <a className="font-semibold" href="tel:+919872943231">
+            +919872943231
           </a>
         </p>
       </div>
