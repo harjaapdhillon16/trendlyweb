@@ -5,7 +5,7 @@ import { Footer } from "../components/Common/footer";
 export const Landing = () => {
   return (
     <>
-      <div className="bg-transparent h-screen w-screen bg-cover bg-repeat ">
+      <div className="bg-black md:bg-transparent h-screen w-screen bg-cover bg-repeat bg-[url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid')] md:bg-[url('')]">
         <div className="bg-black h-screen bg-opacity-40 w-screen text-center relative">
           <div className="absolute xl:top-[35%] md:top-[30%] sm:top-[40%]  w-screen md:translate-y-[50%] translate-y-[90%] margin-0">
             <h1 className="text-5xl font-bold text-white">
