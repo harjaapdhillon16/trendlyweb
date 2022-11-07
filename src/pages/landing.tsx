@@ -5,7 +5,7 @@ import { Footer } from "../components/Common/footer";
 export const Landing = () => {
   return (
     <>
-      <div className="bg-black md:bg-transparent h-screen w-screen bg-cover bg-repeat bg-[url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid')] md:bg-[url('')]">
+      <div className="bg-black md:bg-transparent h-screen w-screen bg-cover bg-repeat ">
         <div className="bg-black h-screen bg-opacity-40 w-screen text-center relative">
           <div className="absolute xl:top-[35%] md:top-[30%] sm:top-[40%]  w-screen md:translate-y-[50%] translate-y-[90%] margin-0">
             <h1 className="text-5xl font-bold text-white">
@@ -56,18 +56,25 @@ export const Landing = () => {
           </a>
         </div>
       </div>
-      <div className="fixed top-0 hidden md:block z-[-100]">
+      <div className="fixed top-0 z-[-100]">
         <video
-          className="w-full h-screen bg-cover object-cover"
+          className="w-screen h-screen bg-cover object-cover"
           autoPlay
+          playsInline
           muted
           loop
-          src="https://firebasestorage.googleapis.com/v0/b/trendly-40221.appspot.com/o/website_assets%2Fvideoplayback.mp4?alt=media&token=2c466b4c-aec8-4165-894f-75dc628da073"
-        />
+        >
+          <source
+            src="https://firebasestorage.googleapis.com/v0/b/trendly-40221.appspot.com/o/website_assets%2Fvideoplayback.webm?alt=media&token=17207c53-6aa6-45d5-b962-bdf680d76fcc"
+            type="video/webm"
+          />
+        </video>
       </div>
-      <WaitIsOver />
-      <Features />
-      <Footer />
+      <div>
+        <WaitIsOver />
+        <Features />
+        <Footer />
+      </div>
     </>
   );
 };
