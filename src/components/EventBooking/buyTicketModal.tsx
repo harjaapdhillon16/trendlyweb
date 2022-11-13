@@ -78,7 +78,7 @@ export const BuyTicketModal = ({
   }
 
   const submitContactDetails = useCallback(async () => {
-    setContactDetails((d) => ({ ...d, loading: true }));
+  
     if (contactDetails.phone.length !== 10) {
       alert("Please provide a valid phone number");
       return;
@@ -86,6 +86,7 @@ export const BuyTicketModal = ({
       alert("Please provide a valid email");
       return;
     }
+    setContactDetails((d) => ({ ...d, loading: true }));
     await fetchEventDetails();
     setContactDetails((d) => ({ ...d, loading: false, submitted: true }));
   }, [contactDetails, fetchEventDetails]);
