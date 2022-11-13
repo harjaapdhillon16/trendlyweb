@@ -60,7 +60,7 @@ export const useRazorpay = ({
     const ticketDataToSend =[...ticketData.filter((item:any)=>Boolean(item.selectedTicket))].map((item)=>({ticketName:item.ticketName,tickets:item.selectedTicket}))
     console.log(JSON.stringify(ticketDataToSend))
     const options = {
-      key: "rzp_test_5zxp7viRYgi6O8", // Enter the Key ID generated from the Dashboard
+      key: "rzp_live_tnkWsLGiRfqOsw", // Enter the Key ID generated from the Dashboard
       amount: amount.toString(),
       currency: "INR",
       name: "Trendly Media Private Limited.",
