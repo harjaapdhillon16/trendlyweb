@@ -5,6 +5,9 @@ import { url } from "../utils/api/apiUrl";
 import Logo from "../assets/icon.png";
 import { EventImage, EventDetails } from "../components/EventBooking";
 import { LoadingJSX } from "../components/Common/PageLoading";
+import { Footer } from '../components/Common/footer'
+import { Header } from '../components/Common/header'
+
 
 const EventBooking = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -52,30 +55,30 @@ const EventBooking = () => {
   const { data, loading } = eventDetails;
   console.log(data);
   return (
-    <div className="bg-gradient-to-r from-red-50 min-h-[100vh] w-full">
-      <div className="bg-black flex items-center">
-        <img src={Logo} className="w-20 h-20 p-3" alt="Logo" />
-        <p className="text-white font-bold">App for events</p>
+    <>
+      <div className="bg-gradient-to-r from-red-50 min-h-[100vh] w-full">
+        <Header />
+        {loading ? (
+          <LoadingJSX />
+        ) : (
+          <>
+            {data?.eventName ? (
+              <div className="md:flex w-full">
+                <div className="md:w-[60vw]">
+                  <EventImage eventImage={data.eventImage} />
+                </div>
+                <div className="md:w-[40vw]">
+                  <EventDetails fetchEventDetails={fetchEventDetails} eventDetails={data} />
+                </div>
+              </div>
+            ) : (
+              <p className="m-2">This event doesn't exist</p>
+            )}
+          </>
+        )}
       </div>
-      {loading ? (
-        <LoadingJSX />
-      ) : (
-        <>
-          {data?.eventName ? (
-            <div className="md:flex w-full">
-              <div className="md:w-[60vw]">
-                <EventImage eventImage={data.eventImage} />
-              </div>
-              <div className="md:w-[40vw]">
-                <EventDetails fetchEventDetails={fetchEventDetails} eventDetails={data} />
-              </div>
-            </div>
-          ) : (
-            <p className="m-2">This event doesn't exist</p>
-          )}
-        </>
-      )}
-    </div>
+      <Footer />
+    </>
   );
 };
 
