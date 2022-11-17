@@ -11,7 +11,7 @@ export const TermsAndConditions = () => {
 
                     <p style={{ fontSize: 18 }}>Trendly is licensed to You (End-User) by Trendly, located and registered at (hereinafter: Licensor), for use only under the terms of this License Agreement.</p>
 
-                    <p style={{ fontSize: 18 }}>Kharar, Punjab&nbsp;<span style={{textDecoration:"underline"}}><a>140301</a></span>, India</p>
+                    <p style={{ fontSize: 18 }}>Kharar, Punjab&nbsp;<span style={{ textDecoration: "underline" }}><a>140301</a></span>, India</p>
 
                     <p style={{ fontSize: 18 }}>By downloading the Application from the Apple AppStore and any update thereto (as permitted by this License Agreement), You indicate that You agree to be bound by all of the terms and conditions of this License Agreement, and that You accept this License Agreement.</p>
 
@@ -43,7 +43,7 @@ export const TermsAndConditions = () => {
 
                     <p style={{ fontSize: 18 }}>2.6 Nothing in this license should be interpreted to restrict third-party terms When using the Application. You must ensure that you comply with applicable third-party terms and conditions.</p>
 
-                    <p style={{ fontSize: 18 }}>3. TECHNICAL REQUIREMENTS<br/>
+                    <p style={{ fontSize: 18 }}>3. TECHNICAL REQUIREMENTS<br />
                         3.1 The Application requires a firmware version 1.0.0 or higher: Licensor recommends using the latest version of the firmware</p>
 
                     <p style={{ fontSize: 18 }}>Edit &amp; Create</p>
@@ -54,12 +54,12 @@ export const TermsAndConditions = () => {
 
                     <p style={{ fontSize: 18 }}>3:4 Licensor reserves the right to modify the technical specifications as it sees appropriate at any time</p>
 
-                    <p style={{ fontSize: 18 }}>4. MAINTENANCE AND SUPPORT<br/>
+                    <p style={{ fontSize: 18 }}>4. MAINTENANCE AND SUPPORT<br />
                         4.1 The Licensor is solely responsible for providing any maintenance and support services for this licensed Application. You can reach the Licensor at the email address listed in the App Store Overview for this licensed Application</p>
 
                     <p style={{ fontSize: 18 }}>42 Trendly and the End-User acknowledge that Apple has no obligation whatsoever to finish any maintenance and support services with respect to the licensed Application.</p>
 
-                    <p style={{ fontSize: 18 }}>5. USE OF DATA<br/>
+                    <p style={{ fontSize: 18 }}>5. USE OF DATA<br />
                         You acknowledge that Licensor will be able to access and adjust Your downloaded licensed Application content and Your personal information, and that Licensors use of such material and information is subject to your legal agreements with Licensor and Licensor's privacy policy: insert privacy policy link here*</p>
 
                     <p style={{ fontSize: 18 }}>6. USER GENERATED CONTRIBUTIONS</p>
@@ -74,7 +74,7 @@ export const TermsAndConditions = () => {
 
                     <p style={{ fontSize: 18 }}>4. Your Contributions are not false, inaccurate, or misleading.</p>
 
-                    <p style={{ fontSize: 18 }}>5 Your Contributions are not unsolicited or unauthorized advertising, promotional materials, pyramid schemes, chain letters, spam, mass mailings, or other forms of solicitation.<br/>
+                    <p style={{ fontSize: 18 }}>5 Your Contributions are not unsolicited or unauthorized advertising, promotional materials, pyramid schemes, chain letters, spam, mass mailings, or other forms of solicitation.<br />
                         6. Your Contributions are not obscene, lewd, lascivious, filthy, violent, harassing, libellous, slanderous or otherwise objectionable (as determined by us)</p>
 
                     <p style={{ fontSize: 18 }}>7. Your Contributions do not ridicule, mock disparage, intimidate, or abuse anyone</p>
@@ -93,7 +93,7 @@ export const TermsAndConditions = () => {
 
                     <p style={{ fontSize: 18 }}>Any use of the Application in viciation of the foregoing violates these Terms of Use and may result in among other things termination or suspension of your rights to use the Application</p>
 
-                    <p style={{ fontSize: 18 }}>7. CONTRIBUTION LICENSE<br/>
+                    <p style={{ fontSize: 18 }}>7. CONTRIBUTION LICENSE<br />
                         By posting your Contributions to any part of the Application or making Contributions accessible to the Application by linking your account from the Application to any of your social networking accounts, you automatically grant, and you represent and warrant that you have the right to grant, to us an unrestricted, unlimited, irrevocable, perpetual, non-exclusive, transferable, royalty-free fully-paid, worldwide right, and license to host, use copy, reproduce, disclose, sell, resell, publish, broad cast, retitle, archive, store, cache, publicly display, reformat, translate, transmit, excerpt (in whole or in part), and distribute such Contributions (including, without limitation, your image and voice) for any purpose, commercial advertising, or otherwise, and to prepare derivative works of, or incorporate is other works, such as Contributions, and grant and authorize sublicenses of the foregoing. The use and distribution may occur in any media formats and through any media channels.</p>
 
                     <p style={{ fontSize: 18 }}>This license will apply to any form, media, or technology now known or hereafter developed, and includes our use of your name, company name, and franchise name, as applicable, and any of the trademarks, service marks, trade names, logos, and personal and commercial Images you provide. You waive all moral rights in your Contributions, and you warrant that moral rights have not otherwise been asserted in your Contributions.</p>
@@ -138,38 +138,38 @@ export const TermsAndConditions = () => {
 
                     <p style={{ fontSize: 18 }}>12. CONTACT INFORMATION</p>
 
-                    <p style={{ fontSize: 18 }}>For general inquiries, complaints, questions or claims concerning the licensed Application, please contact:<br/>
-                        Trendly<br/>
-                            Kharar, Punjab 140301<br/>
-                                India<br/>
-                                    <span style={{textDecoration:"underline"}}><a href="mailto:contact@thetrendlyapp.com" target="_self">contact@thetrendlyapp.com</a></span></p>
+                    <p style={{ fontSize: 18 }}>For general inquiries, complaints, questions or claims concerning the licensed Application, please contact:<br />
+                        Trendly<br />
+                        Kharar, Punjab 140301<br />
+                        India<br />
+                        <span style={{ textDecoration: "underline" }}><a href="mailto:contact@thetrendlyapp.com" target="_self">contact@thetrendlyapp.com</a></span></p>
 
-                                <p style={{ fontSize: 18 }}>13. TERMINATION</p>
+                    <p style={{ fontSize: 18 }}>13. TERMINATION</p>
 
-                                <p style={{ fontSize: 18 }}>The license is valid until terminated by Trendly or by You. Your rights under this license will terminate automatically and without notice from Trendly if You fail to adhere to any term(s) of this license. Upon License termination, You shall stop all use of the Application, and destroy all copies, full or partial, of the Application.</p>
+                    <p style={{ fontSize: 18 }}>The license is valid until terminated by Trendly or by You. Your rights under this license will terminate automatically and without notice from Trendly if You fail to adhere to any term(s) of this license. Upon License termination, You shall stop all use of the Application, and destroy all copies, full or partial, of the Application.</p>
 
-                                <p style={{ fontSize: 18 }}>14. THIRD-PARTY TERMS OF AGREEMENTS AND BENEFICIARY</p>
+                    <p style={{ fontSize: 18 }}>14. THIRD-PARTY TERMS OF AGREEMENTS AND BENEFICIARY</p>
 
-                                <p style={{ fontSize: 18 }}>Trendly represents and warrants that Trendly will comply with applicable third-party terms of agreement when using licensed Application.</p>
+                    <p style={{ fontSize: 18 }}>Trendly represents and warrants that Trendly will comply with applicable third-party terms of agreement when using licensed Application.</p>
 
-                                <p style={{ fontSize: 18 }}>In Accordance with Section 9 of the "Instructions for Minimum Terms of Developer's End-User License Agreement," Apple and Apple's subsidiaries shall be third-party beneficiaries of this End User License Agreement and-upon Your acceptance of the terms and conditions of this license agreement, Apple will have the right (and will be deemed to have accepted the right) to enforce this End User License Agreement against you as a third-party beneficiary thereof.</p>
+                    <p style={{ fontSize: 18 }}>In Accordance with Section 9 of the "Instructions for Minimum Terms of Developer's End-User License Agreement," Apple and Apple's subsidiaries shall be third-party beneficiaries of this End User License Agreement and-upon Your acceptance of the terms and conditions of this license agreement, Apple will have the right (and will be deemed to have accepted the right) to enforce this End User License Agreement against you as a third-party beneficiary thereof.</p>
 
-                                <p style={{ fontSize: 18 }}>15. INTELLECTUAL PROPERTY RIGHTS</p>
+                    <p style={{ fontSize: 18 }}>15. INTELLECTUAL PROPERTY RIGHTS</p>
 
-                                <p style={{ fontSize: 18 }}>Trendly and the End-User acknowledge that, in the event of any third-party claim that the licensed Application or the End User's possession and use of that licensed Application Infringes on the third party's intellectual property rights, Trendly, and not Apple, will be solely responsible for the investigation, defence, settlement and discharge or any such intellectual property Infringement claims.</p>
+                    <p style={{ fontSize: 18 }}>Trendly and the End-User acknowledge that, in the event of any third-party claim that the licensed Application or the End User's possession and use of that licensed Application Infringes on the third party's intellectual property rights, Trendly, and not Apple, will be solely responsible for the investigation, defence, settlement and discharge or any such intellectual property Infringement claims.</p>
 
-                                <p style={{ fontSize: 18 }}>16. APPLICABLE LAW</p>
+                    <p style={{ fontSize: 18 }}>16. APPLICABLE LAW</p>
 
-                                <p style={{ fontSize: 18 }}>This license agreement is governed by the laws of India excluding its conflicts of law rules.</p>
+                    <p style={{ fontSize: 18 }}>This license agreement is governed by the laws of India excluding its conflicts of law rules.</p>
 
-                                <p style={{ fontSize: 18 }}>17. MISCELLANEOUS</p>
+                    <p style={{ fontSize: 18 }}>17. MISCELLANEOUS</p>
 
-                                <p style={{ fontSize: 18 }}>17.1 If any of the terms of this agreement should be or become invalid, the validity of the remaining provisions shall not be affected. Invalid terms will be replaced by valid ones formulated in a way that will achieve the primary purpose.</p>
+                    <p style={{ fontSize: 18 }}>17.1 If any of the terms of this agreement should be or become invalid, the validity of the remaining provisions shall not be affected. Invalid terms will be replaced by valid ones formulated in a way that will achieve the primary purpose.</p>
 
-                                <p style={{ fontSize: 18 }}>17.2 Collateral agreements, changes and amendments are only valid if laid down in writing. The preceding clause can only be waived in writing.</p></div>
-                        </div>
-                        <Footer />
-                    </div>)
+                    <p style={{ fontSize: 18 }}>17.2 Collateral agreements, changes and amendments are only valid if laid down in writing. The preceding clause can only be waived in writing.</p></div>
+            </div>
+            <Footer />
+        </div>)
 }
 
-                        export default TermsAndConditions
+export default TermsAndConditions
