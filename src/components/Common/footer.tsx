@@ -38,6 +38,11 @@ export const Footer = () => {
               Terms and Conditions
             </Link>
           </div>
+          <div>
+            <Link to="/cancellation-policy">
+              Cancellation Policy
+            </Link>
+          </div>
         </div>
       </div>
       <div className="text-center text-2xl font-medium pt-20">Made with ❤️ in Chandigarh</div>

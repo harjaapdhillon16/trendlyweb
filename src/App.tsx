@@ -6,7 +6,16 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Landing, TicketQRPage, EventBooking, Download, TermsAndConditions, PrivacyPolicy } from "./pages";
+import {
+  Landing,
+  TicketQRPage,
+  EventBooking,
+  Download,
+  TermsAndConditions,
+  PrivacyPolicy,
+  Venue,
+  CancellationPolicy,
+} from "./pages";
 
 const Loading = () => (
   <div className="bg-black w-screen h-screen text-white text-center">
@@ -23,7 +32,18 @@ export default function App() {
           <Route exact path="/events/:id" component={EventBooking} />
           <Route exact path="/tickets/:id" component={TicketQRPage} />
           <Route exact path="/download" component={Download} />
-          <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
+          <Route exact path="/venue/:id" component={Venue} />
+          <Route
+            exact
+            path="/terms-and-conditions"
+            component={TermsAndConditions}
+          />
+          <Route
+            exact
+            path="/cancellation-policy"
+            component={CancellationPolicy}
+          />
+          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Redirect to="/" />
         </Switch>
