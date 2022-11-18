@@ -25,6 +25,9 @@ export const Footer = () => {
               +919872943231
             </a>
           </p>
+          <p>
+            Address :{" "}SCF 48, Shiwalik Avenue
+          </p>
         </div>
         <div className="space-y-1">
           <p className="text-2xl">Company</p>
