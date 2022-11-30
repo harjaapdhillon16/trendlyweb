@@ -21,9 +21,6 @@ const Ticket = ({ ticketData, incrementTicket, itemNo }: any) => (
         <p className="px-2 text-lg mb-[-5px]">
           {ticketData.ticketName} : ₹{ticketData.ticketPrice}
         </p>
-        <p className="text-sm px-2">
-          Available Tickets : {ticketData.ticketQuantity}
-        </p>
       </div>
       {ticketData.ticketQuantity === 0 ? (
         <p className="p-2 font-[600]">Sold Out !</p>
