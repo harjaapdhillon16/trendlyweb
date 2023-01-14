@@ -119,9 +119,9 @@ export const BuyTicketModal = ({
     return prev + item.ticketPrice * item.selectedTicket;
   }, 0);
   const serviceCharges =
-    (totalTicketPayments * 15) / 100 < 10
+    (totalTicketPayments * 5) / 100 < 10
       ? 10
-      : (totalTicketPayments * 15) / 100;
+      : (totalTicketPayments * 5) / 100;
 
   const { handlePayment } = useRazorpay({
     totalPayment: totalTicketPayments + serviceCharges,
